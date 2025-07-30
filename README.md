@@ -1,6 +1,3 @@
-# portscanner
-A simple port scanner in Python. Please read the disclaimer before use
-
 # Ethical Port Scanner
 
 This is a simple **Port Scanner** to scan open ports on a target machine or network.
@@ -27,4 +24,10 @@ Clone this repository:
 ```bash
 git clone https://github.com/yourusername/port-scanner.git
 cd port-scanner
+
+---
+
+## Usage
+
+To run the port scanner normally:
 
