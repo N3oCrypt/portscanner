@@ -3,13 +3,13 @@ from termcolor import colored
 import os
 import threading
 
-puerto_abierto_encontrado = False
-lock = threading.Lock()  
+open_port_found = False
+lock = threading.Lock()
 
-def clear_screen(sys):
-    if sys == "1":
+def clear_screen(os_choice):
+    if os_choice == "1":
         os.system("cls")
-    elif sys == "2":
+    elif os_choice == "2":
         os.system("clear")
 
 def print_banner():
@@ -20,56 +20,56 @@ def print_banner():
   :        : :. :   :   : :    :         ::.: :   :: :: :  :   : : ::    :  ::    :  : :: :::  :   : :"""
     print(colored(banner, "red"))
 
-def escanports(ip, port):
-    global puerto_abierto_encontrado
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(0.5)
-    r = s.connect_ex((ip, port))
-    if r == 0:
+def scan_port(target_ip, port_number):
+    global open_port_found
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(0.5)
+    result = sock.connect_ex((target_ip, port_number))
+    if result == 0:
         with lock:
-            puerto_abierto_encontrado = True
-        print(colored(f"[+] Puerto {port} abierto", "green"))
-    s.close()
+            open_port_found = True
+        print(colored(f"[+] Port {port_number} is open", "green"))
+    sock.close()
 
 def main():
-    global puerto_abierto_encontrado
+    global open_port_found
     os.system("cls")
     print("(1) Windows")
     print("(2) Linux")
 
-    sys = input("Selecciona tu OS > ")
+    os_choice = input("Select your operating system > ")
 
-    if sys not in ["1", "2"]:
-        print("Opción inválida. Saliendo.")
+    if os_choice not in ["1", "2"]:
+        print("Invalid option. Exiting.")
         return
 
-    clear_screen(sys)
+    clear_screen(os_choice)
     print_banner()
 
-    ip = input("Introduce la IP objetiva >>> ")
-    clear_screen(sys)
+    target_ip = input("Enter the target IP >>> ")
+    clear_screen(os_choice)
     print_banner()
 
-    puertos = input("Rango de puertos EJ: 1,20 >>> ")
+    ports = input("Port range (e.g., 1,20) >>> ")
     try:
-        start, end = map(int, puertos.split(","))
+        start_port, end_port = map(int, ports.split(","))
     except:
-        print("Rango de puertos inválido. Usa el formato correcto, ej: 1,20")
+        print("Invalid port range. Use the correct format, e.g., 1,20")
         return
 
-    puerto_abierto_encontrado = False  
+    open_port_found = False
 
     threads = []
-    for port in range(start, end + 1):
-        t = threading.Thread(target=escanports, args=(ip, port))
+    for port in range(start_port, end_port + 1):
+        t = threading.Thread(target=scan_port, args=(target_ip, port))
         threads.append(t)
         t.start()
 
     for t in threads:
         t.join()
 
-    if not puerto_abierto_encontrado:
-        print(colored("No se encontraron puertos abiertos. ", "yellow"))
+    if not open_port_found:
+        print(colored("No open ports found.", "yellow"))
 
 if __name__ == "__main__":
     main()
