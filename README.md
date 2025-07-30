@@ -29,10 +29,10 @@ cd port-scanner
 
 ## Usage
 
-To run the port scanner normally:
+## To run the port scanner normally:
 
 python portscanner.py
 
-To run the Port scanner using proxychains:
+## To run the Port scanner using proxychains:
 
 python portscanner-p.py
