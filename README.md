@@ -9,7 +9,7 @@ I am not responsible for any misuse or damage caused by this tool.
 
 ---
 
-![Captura de pantalla]([images/Captura de pantalla 2025-07-30 203017.png](https://github.com/N3oCrypt/portscanner/blob/main/Captura%20de%20pantalla%202025-07-30%20203017.png))
+https://github.com/N3oCrypt/portscanner/blob/main/Captura%20de%20pantalla%202025-07-30%20203017.png
 
 ## Features
 
