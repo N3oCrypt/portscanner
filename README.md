@@ -31,3 +31,8 @@ cd port-scanner
 
 To run the port scanner normally:
 
+python portscanner.py
+
+To run the Port scanner using proxychains:
+
+python portscanner-p.py
