@@ -9,6 +9,8 @@ I am not responsible for any misuse or damage caused by this tool.
 
 ---
 
+![Captura de pantalla](images/Captura de pantalla 2025-07-30 203017.png)
+
 ## Features
 
 - Scans common TCP ports within a specified range.  
