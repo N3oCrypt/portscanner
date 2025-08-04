@@ -25,7 +25,7 @@ I am not responsible for any misuse or damage caused by this tool.
 Clone this repository:
 
 ```bash
-git clone https://github.com/N3oCrypt/port-scanner.git
+git clone https://github.com/N3oCrypt/portscanner.git
 cd port-scanner
 
 ---
